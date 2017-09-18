@@ -1,0 +1,114 @@
+<div class="h_row_1 ideas-hover">
+  <div class="row">
+    <div class="{% if settings.featured_images_content == '3_images' %}col-sm-4{% else %}col-sm-6{% endif %} animated" data-animation="rollIn" >
+      <a href="{{ settings.promo_banner_1_link }}" class="div-link">
+      <div class="box box_1 red5">
+          <figure class="effect-chico"> <img alt="{{ settings.promo_banner_1_heading }}" src="{{ 'promo-1.jpg' | asset_url }}" >
+          <figcaption> </figcaption>
+        </figure>
+        {% if settings.promo_banner_1_heading != blank %}
+        <div class="box_inn">
+          <div class="promo-overlay">
+            <h2>{{ settings.promo_banner_1_heading }}</h2>
+            <p>{{ settings.promo_banner_1_subtext }}<a href="{{ settings.promo_banner_1_link }}" class="fa fa-arrow-circle-right"></a></p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+    <div class="{% if settings.featured_images_content == '3_images' %}col-sm-4{% else %}col-sm-6{% endif %} animated" data-animation="bounceInRight">
+      <a href="{{ settings.promo_banner_2_link }}" class="div-link">
+      <div class="box box_2 red5">
+        <figure class="effect-chico"> <img alt="{{ settings.promo_banner_1_heading }}" src="{{ 'promo-2.jpg' | asset_url }}" >
+          <figcaption> </figcaption>
+        </figure>
+        {% if settings.promo_banner_2_heading != blank %}
+        <div class="box_inn">
+          <div class="promo-overlay">
+            <h2>{{ settings.promo_banner_2_heading }}</h2>
+            <p>{{ settings.promo_banner_2_subtext }}<a href="{{ settings.promo_banner_2_link }}" class="fa fa-arrow-circle-right"></a></p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+    {% if settings.featured_images_content == '3_images' %}
+    <div class="col-sm-4 animated" data-animation="rollIn">
+      <a href="{{ settings.promo_banner_3_link }}" class="div-link">
+      <div class="box box_1 red5">
+        <figure class="effect-chico "> <img alt="{{ settings.promo_banner_3_heading }}" src="{{ 'promo-3.jpg' | asset_url }}" >
+          <figcaption> </figcaption>
+        </figure>
+        {% if settings.promo_banner_3_heading != blank %}
+        <div class="box_inn">
+          <div class="promo-overlay">
+            <h5>{{ settings.promo_banner_3_heading }}</h5>
+            <p>{{ settings.promo_banner_3_subtext }} <a href="{{ settings.promo_banner_3_link }}" class="fa fa-arrow-circle-right"></a></p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% if settings.featured_images_content == '5_images' %}
+<div class="h_row_2 ideas-hover">
+  <div class="row">
+    <div class="col-sm-4 animated" data-animation="rollIn">
+      <a href="{{ settings.promo_banner_3_link }}" class="div-link">
+      <div class="box box_1 red5">
+        <figure class="effect-chico "> <img alt="{{ settings.promo_banner_3_heading }}" src="{{ 'promo-3.jpg' | asset_url }}" >
+          <figcaption> </figcaption>
+        </figure>
+        {% if settings.promo_banner_3_heading != blank %}
+        <div class="box_inn">
+          <div class="promo-overlay">
+            <h5>{{ settings.promo_banner_3_heading }}</h5>
+            <p>{{ settings.promo_banner_3_subtext }} <a href="{{ settings.promo_banner_3_link }}" class="fa fa-arrow-circle-right"></a></p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-4 animated" data-animation="fadeInUpBig">
+      <a href="{{ settings.promo_banner_4_link }}" class="div-link">
+      <div class="box box_2 red5">
+        <figure class="effect-chico "> <img alt="{{ settings.promo_banner_4_heading }}" src="{{ 'promo-4.jpg' | asset_url }}" >
+          <figcaption> </figcaption>
+        </figure>
+        {% if settings.promo_banner_4_heading != blank %}
+        <div class="box_inn">
+          <div class="promo-overlay">
+            <h5>{{ settings.promo_banner_4_heading }}</h5>
+            <p>{{ settings.promo_banner_4_subtext }} <a href="{{ settings.promo_banner_4_link }}" class="fa fa-arrow-circle-right"></a></p>
+          </div>        
+        </div>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-4 animated" data-animation="bounceInRight">
+      <a href="{{ settings.promo_banner_5_link }}" class="div-link">
+      <div class="box box_3 red5">
+        <figure class="effect-chico "> <img alt="{{ settings.promo_banner_5_heading }}" src="{{ 'promo-5.jpg' | asset_url }}" >
+          <figcaption> </figcaption>
+        </figure>
+        {% if settings.promo_banner_5_heading != blank %}
+        <div class="box_inn">
+          <div class="promo-overlay">
+            <h5>{{ settings.promo_banner_5_heading }}</h5>
+            <p>{{ settings.promo_banner_5_subtext }} <a href="{{ settings.promo_banner_5_link }}" class="fa fa-arrow-circle-right"></a></p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,75 @@
+{% paginate collection.products by settings.pagination_limit %}
+
+{% if settings.product_grid_layout == '4-col' %}
+{% assign grid_item_width = '3' %}
+{% elsif settings.product_grid_layout == '3-col' %}
+{% assign grid_item_width = '4' %}
+{% else %}
+{% assign grid_item_width = '6' %}
+{% endif %}
+
+{% assign on_sale = false %}
+{% if product.available and product.compare_at_price > product.price %}
+{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+{% assign sold_out = false %}
+{% endif %}
+
+<div id="content">
+  <div class="container">
+    {% include 'breadcrumb' %}
+    <div class="catalog_c">
+      {% if collection.image or collection.description.size > 0 %}
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="box collection-box animated rollIn" data-animation="rollIn" >
+            {% if collection.image %}
+            <img src="{{ collection | img_url: 'master' }}" alt="{{ collection.title }}" />
+            {% endif %}
+            {% if collection.description.size > 0 %}
+            <div class="rte">
+              {{ collection.description }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <div class="title clearfix">
+        <h1>{{ collection.title }}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+          <div class="product_c">
+            <div class="filter_c">
+              {% include 'collection-views' %}
+              {% include 'collection-sorting' %}
+            </div>
+            <div class="row view-grid animated  fadeInUp" data-animation="fadeInUp">
+              {% for product in collection.products %}
+              <div class="col-md-{{ grid_item_width }} col-xs-6 element mb30">
+                {% include 'product-loop' %}
+              </div>
+              {% else %}
+              <p class="no-products">{{ 'collections.general.no_matches' | t }}</p>
+              {% endfor %}
+            </div>
+            {% if paginate.pages > 1 %}
+            {% include 'pagination-custom' %}
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8">
+        {% include 'sidebar-collection' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endpaginate %}

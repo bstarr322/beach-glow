@@ -1,0 +1,49 @@
+{% assign on_sale = false %}
+{% if product.available and product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+  {% assign sold_out = false %}
+{% endif %}
+<div class="main_box">
+  <div class="box_1">
+    {% if on_sale %}
+    <div class="on-sale">{{ 'products.product.sale' | t }}</div>
+    {% endif %}
+    {% if sold_out %}
+    <div class="sold-out">{{ 'products.product.sold_out' | t }}</div>
+    {% endif %}
+    <div class="product-image">
+      <a href="{{ product.url | within: collection }}"><img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}"></a>
+    </div>
+    {% if settings.show_collection_overlay and settings.collection_overlay == 'cart-info' %}
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <div class="overlay hidden-sm hidden-xs"> 
+        {% if product.available and product.variants.size == 1 %}
+        <input type="submit" value="{{ 'products.product.add_to_cart' | t }}" class="btn_c cart_btn_1" /> 
+        <a href="{{ product.url | within: collection }}" class="info_btn">{{ 'products.product.more_info' | t }}</a>
+        {% else %}
+        <a href="{{ product.url | within: collection }}" class="btn_c more_btn">{{ 'products.product.select_options' | t }}</a>
+        {% endif %}
+      </div>
+    </form>
+    {% elsif settings.show_collection_overlay and settings.collection_overlay == 'quick-view' %}
+      <div class="overlay hidden-sm hidden-xs">
+        {% include 'product-quick-view-btn' qvp:product %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="desc">
+    <h5><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h5>
+    {% if settings.show_grid_type %}
+    <p>{{ product.type }}</p>
+    {% endif %}
+    <div class="price">{% if product.price_varies %}{{ 'products.product.price_from' | t }}{% endif %} {{ product.price | money }} {% if on_sale %}<span class="compare-price">{{ product.compare_at_price | money }}</span>{% endif %}</div>
+  </div>
+  {% if settings.show_collection_overlay and settings.collection_overlay == 'quick-view' %}
+  {% include 'product-quick-view' qvp:product %}
+  {% endif %}
+</div>

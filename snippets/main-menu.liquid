@@ -1,0 +1,691 @@
+<div id="nav">
+  <nav class="navbar navbar-vectorthemes no-border-radius no-active-arrow no-open-arrow" role="navigation" id="main_navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="visible-ms visible-xs pull-right navbar-cart" data-toggle="collapse" data-target="#external_links"><div class="cart-icon"><i class="fa fa-bars"></i></div></a>
+        <a href="/cart" class="visible-ms visible-xs pull-right navbar-cart"><div class="cart-icon"><span class="count{% if cart.item_count < 1 %} hidden{% endif %}">{{ cart.item_count }}</span><i class="fa fa-shopping-cart"></i></div></a>
+        <a href="/search" class="visible-ms visible-xs pull-right navbar-cart"><div class="cart-icon"><i class="fa fa-search"></i></div></a>
+        {% if settings.header_style != 'header1' %}
+          <div class="visible-ms visible-xs">
+        {% endif %}
+          {% if settings.use_logo %}
+            <a class="navbar-brand" href="/" itemprop="url">
+              <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo" />
+            </a>
+          {% else %}
+            <a class="navbar-brand text-logo" href="/" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
+          {% endif %}
+        {% if settings.header_style != 'header1' %}
+          </div><!-- ./visible-ms visible-xs -->
+        {% endif %}
+      </div>
+      <div class="collapse navbar-collapse no-transition" id="external_links">
+        <ul class="nav navbar-nav navbar-left dropdown-onhover">
+          
+          <!-- START OF LINK 1 -->
+
+          {% if settings.link_1_text != blank and settings.link_1_type == 'standard' %}
+          <li><a href="{{ settings.link_1_link }}">{{ settings.link_1_text }}</a></li>
+          {% elsif settings.link_1_text != blank and settings.link_1_type == 'drop' %}
+          <li class="dropdown-short">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_1_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_1_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_1_link }}">{{ settings.link_1_text }}</a>
+            <ul class="dropdown-menu">
+              {% for link in linklists[settings.link_1_col_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% elsif settings.link_1_text != blank and settings.link_1_type contains 'mega' %}
+          <li class="dropdown-full">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_1_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_1_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_1_link }}">{{ settings.link_1_text }}</a>
+
+            <div class="dropdown-menu">
+              
+              <!-- Column 1 -->
+              {% if settings.link_1_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_1_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_1_col_1_heading != blank %}
+                <h5>{{ settings.link_1_col_1_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_1_col_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+
+              <!-- Column 2 -->
+              {% if settings.link_1_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_1_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_1_col_2_heading != blank %}
+                <h5>{{ settings.link_1_col_2_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_1_col_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              
+              <!-- Column 3 -->
+              {% if settings.link_1_type == 'mega3' %}
+              <div class="col-sm-4">
+                {% if settings.link_1_col_3_heading != blank %}
+                <h5>{{ settings.link_1_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_1_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if settings.link_1_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_1_col_3_heading != blank %}
+                <h5>{{ settings.link_1_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_1_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %} 
+
+               <!-- Column 4 -->
+              {% if settings.link_1_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_1_col_4_heading != blank %}
+                <h5>{{ settings.link_1_col_4_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_1_col_4].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <!-- END OF LINK 1 -->
+
+          <!-- START OF LINK 2 -->
+
+          {% if settings.link_2_text != blank and settings.link_2_type == 'standard' %}
+          <li><a href="{{ settings.link_2_link }}">{{ settings.link_2_text }}</a></li>
+          {% elsif settings.link_2_text != blank and settings.link_2_type == 'drop' %}
+          <li class="dropdown-short">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_2_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_2_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_2_link }}">{{ settings.link_2_text }}</a>
+            <ul class="dropdown-menu">
+              {% for link in linklists[settings.link_2_col_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% elsif settings.link_2_text != blank and settings.link_2_type contains 'mega' %}
+          <li class="dropdown-full">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_2_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_2_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_2_link }}">{{ settings.link_2_text }}</a>
+
+            <div class="dropdown-menu">
+              
+              <!-- Column 1 -->
+              {% if settings.link_2_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_2_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_2_col_1_heading != blank %}
+                <h5>{{ settings.link_2_col_1_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_2_col_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+
+              <!-- Column 2 -->
+              {% if settings.link_2_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_2_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_2_col_2_heading != blank %}
+                <h5>{{ settings.link_2_col_2_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_2_col_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              
+              <!-- Column 3 -->
+              {% if settings.link_2_type == 'mega3' %}
+              <div class="col-sm-4">
+                {% if settings.link_2_col_3_heading != blank %}
+                <h5>{{ settings.link_2_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_2_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if settings.link_2_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_2_col_3_heading != blank %}
+                <h5>{{ settings.link_2_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_2_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %} 
+
+               <!-- Column 4 -->
+              {% if settings.link_2_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_2_col_4_heading != blank %}
+                <h5>{{ settings.link_2_col_4_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_2_col_4].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <!-- END OF LINK 2 -->
+
+          <!-- START OF LINK 3 -->
+
+          {% if settings.link_3_text != blank and settings.link_3_type == 'standard' %}
+          <li><a href="{{ settings.link_3_link }}">{{ settings.link_3_text }}</a></li>
+          {% elsif settings.link_3_text != blank and settings.link_3_type == 'drop' %}
+          <li class="dropdown-short">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_3_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_3_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_3_link }}">{{ settings.link_3_text }}</a>
+            <ul class="dropdown-menu">
+              {% for link in linklists[settings.link_3_col_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% elsif settings.link_3_text != blank and settings.link_3_type contains 'mega' %}
+          <li class="dropdown-full">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_3_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_3_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_3_link }}">{{ settings.link_3_text }}</a>
+
+            <div class="dropdown-menu">
+              
+              <!-- Column 1 -->
+              {% if settings.link_3_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_3_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_3_col_1_heading != blank %}
+                <h5>{{ settings.link_3_col_1_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_3_col_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+
+              <!-- Column 2 -->
+              {% if settings.link_3_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_3_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_3_col_2_heading != blank %}
+                <h5>{{ settings.link_3_col_2_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_3_col_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              
+              <!-- Column 3 -->
+              {% if settings.link_3_type == 'mega3' %}
+              <div class="col-sm-4">
+                {% if settings.link_3_col_3_heading != blank %}
+                <h5>{{ settings.link_3_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_3_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if settings.link_3_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_3_col_3_heading != blank %}
+                <h5>{{ settings.link_3_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_3_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %} 
+
+               <!-- Column 4 -->
+              {% if settings.link_3_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_3_col_4_heading != blank %}
+                <h5>{{ settings.link_3_col_4_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_3_col_4].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <!-- END OF LINK 3 -->
+
+          <!-- START OF LINK 4 -->
+
+          {% if settings.link_4_text != blank and settings.link_4_type == 'standard' %}
+          <li><a href="{{ settings.link_4_link }}">{{ settings.link_4_text }}</a></li>
+          {% elsif settings.link_4_text != blank and settings.link_4_type == 'drop' %}
+          <li class="dropdown-short">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_4_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_4_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_4_link }}">{{ settings.link_4_text }}</a>
+            <ul class="dropdown-menu">
+              {% for link in linklists[settings.link_4_col_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% elsif settings.link_4_text != blank and settings.link_4_type contains 'mega' %}
+          <li class="dropdown-full">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_4_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_4_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_4_link }}">{{ settings.link_4_text }}</a>
+
+            <div class="dropdown-menu">
+              
+              <!-- Column 1 -->
+              {% if settings.link_4_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_4_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_4_col_1_heading != blank %}
+                <h5>{{ settings.link_4_col_1_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_4_col_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+
+              <!-- Column 2 -->
+              {% if settings.link_4_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_4_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_4_col_2_heading != blank %}
+                <h5>{{ settings.link_4_col_2_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_4_col_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              
+              <!-- Column 3 -->
+              {% if settings.link_4_type == 'mega3' %}
+              <div class="col-sm-4">
+                {% if settings.link_4_col_3_heading != blank %}
+                <h5>{{ settings.link_4_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_4_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if settings.link_4_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_4_col_3_heading != blank %}
+                <h5>{{ settings.link_4_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_4_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %} 
+
+               <!-- Column 4 -->
+              {% if settings.link_4_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_4_col_4_heading != blank %}
+                <h5>{{ settings.link_4_col_4_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_4_col_4].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <!-- END OF LINK 4 -->
+
+          <!-- START OF LINK 5 -->
+
+          {% if settings.link_5_text != blank and settings.link_5_type == 'standard' %}
+          <li><a href="{{ settings.link_5_link }}">{{ settings.link_5_text }}</a></li>
+          {% elsif settings.link_5_text != blank and settings.link_5_type == 'drop' %}
+          <li class="dropdown-short">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_5_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_5_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_5_link }}">{{ settings.link_5_text }}</a>
+            <ul class="dropdown-menu">
+              {% for link in linklists[settings.link_5_col_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% elsif settings.link_5_text != blank and settings.link_5_type contains 'mega' %}
+          <li class="dropdown-full">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_5_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_5_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_5_link }}">{{ settings.link_5_text }}</a>
+
+            <div class="dropdown-menu">
+              
+              <!-- Column 1 -->
+              {% if settings.link_5_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_5_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_5_col_1_heading != blank %}
+                <h5>{{ settings.link_5_col_1_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_5_col_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+
+              <!-- Column 2 -->
+              {% if settings.link_5_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_5_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_5_col_2_heading != blank %}
+                <h5>{{ settings.link_5_col_2_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_5_col_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              
+              <!-- Column 3 -->
+              {% if settings.link_5_type == 'mega3' %}
+              <div class="col-sm-4">
+                {% if settings.link_5_col_3_heading != blank %}
+                <h5>{{ settings.link_5_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_5_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if settings.link_5_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_5_col_3_heading != blank %}
+                <h5>{{ settings.link_5_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_5_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %} 
+
+               <!-- Column 4 -->
+              {% if settings.link_5_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_5_col_4_heading != blank %}
+                <h5>{{ settings.link_5_col_4_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_5_col_4].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <!-- END OF LINK 5 -->
+
+          <!-- START OF LINK 6 -->
+
+          {% if settings.link_6_text != blank and settings.link_6_type == 'standard' %}
+          <li><a href="{{ settings.link_6_link }}">{{ settings.link_6_text }}</a></li>
+          {% elsif settings.link_6_text != blank and settings.link_6_type == 'drop' %}
+          <li class="dropdown-short">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_6_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_6_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_6_link }}">{{ settings.link_6_text }}</a>
+            <ul class="dropdown-menu">
+              {% for link in linklists[settings.link_6_col_1].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% elsif settings.link_6_text != blank and settings.link_6_type contains 'mega' %}
+          <li class="dropdown-full">
+            <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ settings.link_6_link }}" class="hidden-xs dropdown-toggle">{{ settings.link_6_text }}<span class="caret"></span></a>
+            <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+            <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ settings.link_6_link }}">{{ settings.link_6_text }}</a>
+
+            <div class="dropdown-menu">
+              
+              <!-- Column 1 -->
+              {% if settings.link_6_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_6_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_6_col_1_heading != blank %}
+                <h5>{{ settings.link_6_col_1_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_6_col_1].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+
+              <!-- Column 2 -->
+              {% if settings.link_6_type == 'mega2' %}
+              <div class="col-sm-6">
+              {% elsif settings.link_6_type == 'mega3'%}
+              <div class="col-sm-4">
+              {% else %}
+              <div class="col-sm-3">
+              {% endif %}
+                {% if settings.link_6_col_2_heading != blank %}
+                <h5>{{ settings.link_6_col_2_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_6_col_2].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              
+              <!-- Column 3 -->
+              {% if settings.link_6_type == 'mega3' %}
+              <div class="col-sm-4">
+                {% if settings.link_6_col_3_heading != blank %}
+                <h5>{{ settings.link_6_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_6_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+              {% if settings.link_6_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_6_col_3_heading != blank %}
+                <h5>{{ settings.link_6_col_3_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_6_col_3].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %} 
+
+               <!-- Column 4 -->
+              {% if settings.link_6_type == 'mega4' %}
+              <div class="col-sm-3">
+                {% if settings.link_6_col_4_heading != blank %}
+                <h5>{{ settings.link_6_col_4_heading }}</h5>
+                {% endif %}
+                <ul>
+                {% for link in linklists[settings.link_6_col_4].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>
+          </li>
+          {% endif %}
+
+          <!-- END OF LINK 6 -->
+
+          <!-- Links only on mobile -->
+          {% if shop.customer_accounts_enabled == true %}
+          <li class="visible-ms visible-xs">
+            {% if customer %}
+            <a href="/account/orders">{{ 'layout.nav.account_title' | t }}</a>
+            {% else %}
+            <a href="/account/login">{{ 'layout.nav.account_title' | t }}</a>
+            {% endif %}
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="hidden-xs nav navbar-nav navbar-right">
+          <li class="dropdown-grid no-open-arrow">
+            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><div class="cart-icon"><span class="count{% if cart.item_count < 1 %} hidden{% endif %}">{{ cart.item_count }}</span><i class="fa fa-shopping-cart"></i></div></a>
+            <div class="dropdown-grid-wrapper">
+              <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-9 col-md-7" role="menu">
+                {% include 'menu-cart' %}
+              </div>
+            </div>
+          </li>
+          {% if shop.customer_accounts_enabled %}
+          <li class="dropdown-grid no-open-arrow">
+            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><span class="icons"><i class="fa fa-user"></i></span></a>
+            <div class="dropdown-grid-wrapper">
+              <div class="dropdown-menu no-padding animated fadeInDown col-xs-12 col-sm-5 col-md-4 col-lg-3" role="menu">
+                {% include 'menu-account' %}
+              </div>
+            </div>
+          </li>
+          {% endif %}
+          <li class="dropdown-grid no-open-arrow">
+            <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+            <div class="dropdown-grid-wrapper" role="menu">
+              <div class="dropdown-menu col-sm-4 col-lg-3 animated fadeInDown">
+                {% include 'menu-search' %}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

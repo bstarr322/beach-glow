@@ -1,0 +1,119 @@
+<div id="footer" >
+  {% if settings.show_footer_top %}
+  <div class="f_top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-ms-6 col-xs-12">
+          <div class="ftop_blk">
+            <a href="{{ settings.cta_1_link }}"><h5>{{ settings.cta_1_text }} <span class="fa fa-arrow-circle-right"></span></h5></a>
+            <span class="icon"><i class="fa fa-{{ settings.cta_1_icon }}"></i></span> 
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-ms-6 col-xs-12">
+          <div class="ftop_blk">
+            <a href="{{ settings.cta_2_link }}"><h5>{{ settings.cta_2_text }}<span class="fa fa-arrow-circle-right"></span></h5></a>
+            <span class="icon"><i class="fa fa-{{ settings.cta_2_icon }}"></i></span> 
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-ms-6 col-xs-12">
+          <div class="ftop_blk">
+            <a href="{{ settings.cta_3_link }}"><h5>{{ settings.cta_3_text }} <span class="fa fa-arrow-circle-right"></span></h5></a>
+            <span class="icon"><i class="fa fa-{{ settings.cta_3_icon }}"></i></span> 
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-ms-6 col-xs-12">
+          <div class="ftop_blk bor_none">
+            <a href="{{ settings.cta_4_link }}"><h5>{{ settings.cta_4_text }} <span class="fa fa-arrow-circle-right"></span></h5></a>
+            <span class="icon"><i class="fa fa-{{ settings.cta_4_icon }}"></i></span> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="f_mid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-ms-6">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <h4>{{ settings.footer_1_heading }}</h4>
+              {% if settings.footer_linklist_1 != '' %}
+              <ul>
+              {% for link in linklists[settings.footer_linklist_1].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+              </ul>
+              {% else %}
+              <div class="desc">
+                {{ settings.footer_1_text }}
+              </div>
+              {% endif %}          
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <h4>{{ settings.footer_2_heading }}</h4>
+              {% if settings.footer_linklist_2 != '' %}
+              <ul>
+              {% for link in linklists[settings.footer_linklist_2].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+              </ul>
+              {% else %}
+              <div class="desc">
+                {{ settings.footer_2_text }}
+              </div>
+              {% endif %}   
+            </div>
+          </div>
+          {% if settings.show_payment_methods and shop.enabled_payment_types != empty %}
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="partner">
+                <h4>{{ 'layout.footer.payment_method_heading' | t }}</h4>
+                <ul class="list-inline">
+                  {% for type in shop.enabled_payment_types %}
+                  <li><img src="{{ type | payment_type_img_url }}" alt="{{ type | replace: '_',' '}}" /></li>
+                  {% endfor %}
+                </ul>
+              </div> 
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-ms-6 col-xs-12">
+          <h4>{{ settings.footer_3_heading }}</h4>
+          {% if settings.footer_linklist_3 != '' %}
+          <ul>
+          {% for link in linklists[settings.footer_linklist_3].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+          </ul>
+          {% else %}
+          <div class="desc">
+            {{ settings.footer_3_text }}
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-ms-6 col-xs-12">
+          <h4>{{ settings.footer_4_heading }}</h4>
+          <div class="desc">
+            {{ settings.footer_4_text }}
+          </div>
+          {% if settings.footer_display_newsletter %}
+            {% include 'newsletter-form' %}
+          {% endif %}
+          {% if settings.footer_display_social %}
+            {% include 'social-profiles' %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="f_bot">
+    <div class="container">
+      <div class="f_bot_left">&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }} {{ 'layout.footer.theme_credits_html' | t }}</div>
+      <div class="f_bot_right">{{ powered_by_link }}</div>
+    </div>
+  </div>
+</div>

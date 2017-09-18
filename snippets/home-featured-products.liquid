@@ -1,0 +1,28 @@
+<div class="h_row_4" data-animation="fadeInUp">
+  <div class="clearfix">
+    <h3>{{ 'home_page.sections.featured_products_title' | t }}</h3>
+  </div>
+  <div class="carosel product_c">
+    <div class="row">
+      {% if settings.featured_collection != blank and collections[settings.featured_collection].handle == settings.featured_collection and collections[settings.featured_collection].products_count > 0 %}
+      <div id="featured-products" class="owl-carousel owl-theme">
+        {% for product in collections[settings.featured_collection].products | limit: 12 %}
+          {% include 'product-loop' %}
+        {% endfor %}
+      </div>
+      {% elsif collections.[settings.featured_collection].handle == 'frontpage' and collections.frontpage.products_count < 1 %}
+      <div class="col-sm-12">
+        <p>{{ 'home_page.sections.no_frontpage_products_html' | t }}</p>
+      </div>
+      {% elsif settings.featured_collection != blank and collections[settings.featured_collection].handle != 'frontpage' and collections[settings.featured_collection].products_count < 1 %}
+      <div class="col-sm-12">
+        <p>{{ 'home_page.sections.no_products_html' | t }}</p>
+      </div>
+      {% else %}
+      <div class="col-sm-12">
+        <p>{{ 'home_page.sections.no_featured' | t }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

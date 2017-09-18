@@ -1,0 +1,25 @@
+{{ 'instagramlite.min.js' | asset_url | script_tag }}
+
+<div class="h_row_5 animated" data-animation="fadeInUp">
+  <div class="clearfix">
+    <h3>{{ 'home_page.sections.instagram_title' | t }}</h3>
+  </div>
+  <div id="instafeed" data-client-id="{{ settings.instagram_client_id | strip }}" data-count="{{ settings.instagram_number | strip }}"></div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+  var $target = $("#instafeed");
+  $target.instagramLite({
+    clientID: $target.data('client-id'),
+    urls: true,
+    videos: true,
+    limit: $target.data('count'),
+    error: function(errorCode, errorMessage) {
+      if(errorCode && errorMessage) {
+        alert(errorCode +': '+ errorMessage);
+      } 
+    }
+    });
+  });
+</script>

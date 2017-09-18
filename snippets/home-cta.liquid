@@ -1,0 +1,12 @@
+<div class="h_row_3 animated" data-animation="fadeInUp">
+  <h2>{{ settings.home_cta_heading }}</h2>
+  <p>{{ settings.home_cta_subtext }}</p>
+  {% if settings.home_cta_link != '' %}
+  <a class="btn_c" href="{{ settings.home_cta_link}}">{{ 'home_page.sections.learn_more' | t }}</a>
+  {% endif %}
+  {% if settings.use_home_cta_image and settings.home_cta_image != '' %}
+  <div class="thumb animated" data-animation="fadeInUp">
+    <img alt="{{ settings.home_cta_heading }}" src="{{ 'home-cta.jpg' | asset_url }}" />
+  </div>
+  {% endif %}
+</div>

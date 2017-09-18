@@ -1,0 +1,37 @@
+<div class="menu_c cart_menu">
+  <div class="menu_title clearfix">
+    <h4>{{ 'cart.general.title' | t }}</h4>
+  </div>
+  {% if cart.item_count > 0 %}
+  <form action="/cart" method="post" novalidate>
+  <div class="cart_row">
+    {% for item in cart.items %}
+    <ul>
+      <li>
+        <div class="pro_img">
+          <a href="{{ item.product.url }}">  
+            <img src="{{ item.product.featured_image.src | product_img_url: 'small' }}" alt="{{ item.title | escape }}" />
+          </a>
+        </div>
+      </li>
+      <li>
+        <h5><a href="{{ item.product.url | within: collections.all }}" class="item-name">{{ item.title }}</a></h5>
+        <p>{{ item.product.type }}</p>
+      </li>
+      <li>
+        <div class="price pull-right">{{ item.price | money }}</div>
+      </li>
+    </ul>
+    {% endfor %}
+  </div>
+  <div class="checkout_row clearfix">
+    <button type="submit" name="checkout" value="{{ 'cart.general.checkout' | t }}" class="btn_c">{{ 'cart.general.checkout' | t }}</button>
+    <a href="/cart" class="checkout_btn">{{ 'cart.general.view_cart' | t }}</a>
+  </div>
+  </form>
+  {% else %}
+  <div class="cart_row">
+    <div class="empty-cart">{{ 'cart.general.empty' | t }}</div>
+  </div>
+  {% endif %}
+</div>

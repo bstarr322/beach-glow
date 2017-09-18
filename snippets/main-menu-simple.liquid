@@ -1,0 +1,82 @@
+<div id="nav">
+  <nav class="navbar navbar-vectorthemes no-border-radius no-active-arrow no-open-arrow" role="navigation" id="main_navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="#" class="visible-ms visible-xs pull-right navbar-cart" data-toggle="collapse" data-target="#external_links"><div class="cart-icon"><i class="fa fa-bars"></i></div></a>
+      <a href="/cart" class="visible-ms visible-xs pull-right navbar-cart"><div class="cart-icon"><span class="count{% if cart.item_count < 1 %} hidden{% endif %}">{{ cart.item_count }}</span><i class="fa fa-shopping-cart"></i></div></a>
+      <a href="/search" class="visible-ms visible-xs pull-right navbar-cart"><div class="cart-icon"><i class="fa fa-search"></i></div></a>
+      {% if settings.header_style != 'header1' %}
+          <div class="visible-ms visible-xs">
+        {% endif %}
+          {% if settings.use_logo %}
+            <a class="navbar-brand" href="/" itemprop="url">
+              <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo" />
+            </a>
+          {% else %}
+            <a class="navbar-brand text-logo" href="/" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
+          {% endif %}
+        {% if settings.header_style != 'header1' %}
+          </div><!-- ./visible-ms visible-xs -->
+      {% endif %}
+    </div>
+    <div class="collapse navbar-collapse no-transition" id="external_links">
+      <ul class="nav navbar-nav navbar-left dropdown-onhover">
+        {% for link in linklists.main-menu.links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
+          <li class="dropdown-short">
+          <a data-hover="dropdown" data-delay="500" data-target="#" href="{{ link.url }}" class="hidden-xs dropdown-toggle">{{ link.title | escape }}<span class="caret"></span></a>
+          <a data-hover="dropdown" data-delay="500" data-toggle="dropdown" style="margin-top: 0px;" href="javascript:;" class="pull-right col-xs-3 hidden-sm hidden-md hidden-lg  dropdown-toggle" aria-expanded="false">&nbsp;<span class="caret"></span></a>
+          <a style="float: none;" class="col-xs-9 hidden-sm hidden-md hidden-lg" href="{{ link.url }}">{{ link.title | escape }}</a>
+            <ul role="menu" class="dropdown-menu">
+              {% for childlink in linklists[child_list_handle].links %}
+              <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        <!-- Links only on mobile -->
+        {% if shop.customer_accounts_enabled == true %}
+        <li class="visible-ms visible-xs">
+          {% if customer %}
+          <a href="/account/orders">{{ 'layout.nav.account_title' | t }}</a>
+          {% else %}
+          <a href="/account/login">{{ 'layout.nav.account_title' | t }}</a>
+          {% endif %}
+        </li>
+        {% endif %}
+    </ul>
+    <ul class="hidden-xs nav navbar-nav navbar-right">
+      <li class="dropdown-grid no-open-arrow">
+        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><div class="cart-icon"><span class="count{% if cart.item_count < 1 %} hidden{% endif %}">{{ cart.item_count }}</span><i class="fa fa-shopping-cart"></i></div></a>
+        <div class="dropdown-grid-wrapper">
+          <div class="dropdown-menu no-padding animated  fadeInDown col-xs-12 col-sm-9 col-md-7" role="menu">
+            {% include 'menu-cart' %}
+          </div>
+        </div>
+      </li>
+      {% if shop.customer_accounts_enabled %}
+      <li class="dropdown-grid no-open-arrow">
+        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="true"><span class="icons"><i class="fa fa-user"></i></span></a>
+        <div class="dropdown-grid-wrapper">
+          <div class="dropdown-menu no-padding animated  fadeInDown col-xs-12 col-sm-5 col-md-4 col-lg-3" role="menu">
+            {% include 'menu-account' %}
+          </div>
+        </div>
+      </li>
+      {% endif %}
+      <li class="dropdown-grid no-open-arrow">
+        <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle" aria-expanded="false"><span class="icons"><i class="fa fa-search"></i></span></a>
+        <div class="dropdown-grid-wrapper" role="menu">
+          <div class="dropdown-menu col-sm-4 col-lg-3 animated fadeInDown">
+            {% include 'menu-search' %}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

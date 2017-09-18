@@ -1,0 +1,43 @@
+<div class="header_top">
+  <div class="container">
+    <div class="top_menu hidden-ms hidden-xs">
+      {% if settings.use_logo %}
+        <a class="navbar-brand" href="/" itemprop="url">
+          <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="img-responsive" itemprop="logo" />
+        </a>
+      {% else %}
+        <a class="navbar-brand text-logo" href="/" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
+      {% endif %}
+    </div>
+    <div class="hed_right">
+      {% if settings.heading_content != 'none' or settings.show_multiple_currencies %}
+      <ul>
+        {% if settings.heading_content == 'links' %}
+        {% for link in linklists[settings.header_top_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% else %}
+        <li>{{ 'general.header.no_links' | t }}</li>
+        {% endfor %}
+        {% elsif settings.heading_content == 'text' and settings.header_top_text != blank %}
+        <li><span class="header-top-text">{{ settings.header_top_text }}</span></li>
+        {% endif %}
+        {% if settings.show_multiple_currencies %}
+        {% include 'currencies-switcher' %}
+        {% endif %}
+      </ul>
+      {% endif %}
+      {% if settings.show_header_phone or settings.show_header_email %}
+      <div class="header-contact">
+        <ul>
+          {% if settings.header_phone != blank %}
+          <li><a href="tel:{{ settings.header_phone }}"><span class="fa fa-phone"></span>{{ settings.header_phone }}</a></li>
+          {% endif %}
+          {% if settings.header_email != blank %}
+          <li><a href="mailto:{{ settings.header_email }}"><span class="fa fa-envelope"></span>{{ settings.header_email }}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

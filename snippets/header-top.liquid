@@ -1,0 +1,45 @@
+<div class="header_top">
+  <div class="container">
+    <div class="top_menu">
+      {% if settings.heading_content != 'none' %}
+      <ul>
+        {% if settings.heading_content == 'links' %}
+        {% for link in linklists[settings.header_top_linklist].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% else %}
+        <li>{{ 'general.header.no_links' | t }}</li>
+        {% endfor %}
+        {% elsif settings.heading_content == 'text' and settings.header_top_text != blank %}
+        <li><span class="header-top-text">{{ settings.header_top_text }}</span></li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="hed_right">
+      <ul>
+        {% if settings.header_phone != blank %}
+        <li><a href="tel:{{ settings.header_phone }}"><span class="fa fa-phone"></span>{{ settings.header_phone }}</a></li>
+        {% endif %}
+        {% if settings.header_email != blank %}
+        <li><a href="mailto:{{ settings.header_email }}"><span class="fa fa-envelope"></span>{{ settings.header_email }}</a></li>
+        {% endif %}
+        {% if settings.show_multiple_currencies %}
+        {% include 'currencies-switcher' %}
+        {% endif %}    
+      </ul>
+    </div>
+  </div>
+</div>
+{% if settings.header_style == 'header3' %}
+<div class="logo-centered clearfix hidden-ms hidden-xs">
+  {% if settings.use_logo %}
+  <a href="/" itemprop="url">
+    <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" class="img-responsive" itemprop="logo" />
+  </a>
+  {% else %}
+  <div class="logo-text">
+    <a class="text-logo" href="/" itemscope itemtype="http://schema.org/Organization">{{ shop.name }}</a>
+  </div>
+  {% endif %}
+</div> 
+{% endif %}

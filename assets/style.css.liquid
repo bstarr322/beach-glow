@@ -2965,6 +2965,10 @@ Collection / Product
   display:block;
   float:left;
 }
+#content .pro_main_c table {
+  width: 100% !important;
+}
+
 #content .pro_main_c .desc_blk .desc_blk_bot .price span#comparePrice {
   font-size:13px;
   color:#cccccc;
@@ -3308,6 +3312,10 @@ Footer
   color:{{ settings.hf_text_color }};
   background-image: url({{'custom_footer.png' | asset_url }});
 }
+#footer .f_mid > .row {
+  margin-bottom: 15px;
+}
+
 #footer .f_mid a {
   color:{{ settings.hf_footer_link_color }};
 }
@@ -3320,22 +3328,29 @@ Footer
 }
 #footer .f_mid .desc {
   font-size:14px;
-  line-height:21px;
+  line-height:1.6;
   color:{{ settings.hf_text_color }};
   margin:0;
 }
 #footer .f_mid .desc p {
   font-size:14px;
-  line-height:21px;
+  line-height:1.6;
   color:{{ settings.hf_text_color }};
   padding:5px 0;
   margin:0;
 }
+#footer .f_mid ul li {
+  margin-bottom: 3.5px;
+}
+
 #footer .f_mid .desc p:first-child {
   padding-top:0;
 }
 #footer .f_mid .partner {
-  padding-top:15px;
+  padding:15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #footer .f_mid .partner ul {
   margin:0;
@@ -3343,15 +3358,15 @@ Footer
 }
 #footer .f_mid .partner ul li {
   margin:0;
-  padding:0 3px;
+  padding:0 5px;
   float:left;
 }
 #footer .f_mid .partner ul li:first-child {
   padding-left:0;
 }
 #footer .f_mid .partner ul li img {
-  width:40px;
-  height:25px;
+  width:55px;
+  height:35px;
 }
 #footer .f_mid p {
   font-size:14px;
@@ -3388,6 +3403,39 @@ Footer
   color:#d7dbdb;
   line-height:30px;
 }
+
+.social-icons {
+  border-top: 1px solid #37bbec;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: initial;
+  padding-top: 15px;
+}
+
+.social-icons li {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.social-icons li a {
+  color: #bbbbbb;
+}
+
+.social-icons img {
+  width: 35px;
+  height: 35px;
+  transition: all 0.2s ease-in-out;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.social-icons a:hover img, .social-icons a:focus img {
+  -webkit-filter: none;
+  filter: none;
+}
+
 .social {
   padding:30px 0 0 0;
 }
@@ -5166,7 +5214,7 @@ Responsive Styles
     padding:25px 25px 92px 25px;
   }
   #footer .f_mid .partner ul li {
-    padding:0 3px;
+    padding:0 5px;
   }
 }
 
@@ -5892,7 +5940,7 @@ Responsive Styles
   #footer .f_mid .partner ul li {
     float:none;
     width:auto;
-    padding:5px 3px;
+    padding:5px;
   }
   #footer .f_mid h4 {
     padding-top:15px;
@@ -6271,8 +6319,7 @@ Responsive Styles
     display:inline-block;
   }
   #footer .f_mid .partner {
-    padding-top:10px;
-    margin-bottom:10px;
+    padding: 10px 0;
   }
 }
 #qr-code {

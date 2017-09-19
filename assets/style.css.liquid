@@ -1173,9 +1173,9 @@ Content
 #content .main_box .box_1 img {
   width:auto;
   max-width:100%;
-  height:auto;
-  max-height: 250px;
+  height: 200px;
   margin:0 auto;
+  object-fit: contain;
 }
 #content .main_box .desc {
   padding:15px 10px;
@@ -4018,6 +4018,10 @@ a.spr-summary-actions-newreview:active, .spr-button:active, .spr-button-primary:
 .slider_1 img{
   width:100%;
   height:auto;
+  max-height: 600px;
+  width: auto;
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 
@@ -5929,6 +5933,7 @@ Responsive Styles
   }
   #content .filter_c {
     top:0px;
+    width: 100%;
   }
   .add-address .btn_c {
     float: none;
@@ -6227,7 +6232,7 @@ Responsive Styles
     padding:0 5px;
   }
   #content .filter_c .sel_2 {
-    width:150px;
+    width: calc(100% - 60px);
   }
   #content .h_row_4 h3 {
     font-size:18px;

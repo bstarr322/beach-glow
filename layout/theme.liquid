@@ -123,6 +123,12 @@
     {% endif %}
 
 	{{ 'scripts.js' | asset_url | script_tag }}
+  {{ 'jquery.matchheight.min.js' | asset_url | script_tag }}
+  {{ 'jquery.products.js' | asset_url | script_tag }}
+  
+  <script>
+    Shopify.Products.recordRecentlyViewed();
+  </script>
 
   </body>
 </html>

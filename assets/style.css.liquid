@@ -1160,6 +1160,13 @@ Content
   line-height: 35px;
   background-color: {{ settings.secondary_color }};
   color: {{ settings.button_text_color }};
+
+  /*background-image: url(https://lecircuitquyon.files.wordpress.com/2013/10/sales-logo.png);
+  width: 50px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -999999999px;*/
 }
 
 #content .main_box .box_1 .sold-out {
@@ -2714,8 +2721,11 @@ Collection / Product
 #content .filter_c .collection-view {
   margin-left:10px;
 }
-#content .collection-view a i {
+#content .collection-view a.active-filter i {
   color:{{ settings.primary_color }};
+}
+#content .collection-view a i {
+  color:#ddd;
 }
 #content a.backtocate {
   display:block;
@@ -4019,7 +4029,6 @@ a.spr-summary-actions-newreview:active, .spr-button:active, .spr-button-primary:
   width:100%;
   height:auto;
   max-height: 600px;
-  width: auto;
   margin: 0 auto;
   object-fit: contain;
 }
@@ -4156,7 +4165,7 @@ html .modal-content {
   }
 
   .quick-view-panel .swatch{margin:0;}
-  .quick-view-panel .text-smaller{ font-size: 90%;margin-top: .25em; }
+  .quick-view-panel .text-smaller{ margin-top: .25em; }
 
 {% endif %}
 
